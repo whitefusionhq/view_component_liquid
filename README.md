@@ -34,9 +34,7 @@ TODO: Write usage instructions here
 
 ## Bridgetown Filters
 
-```ruby
-bundle add bridgetown-core
-```
+    $ bundle add bridgetown-core
 
 Then create the file `config/initializers/bridgetown.rb`
 
@@ -50,6 +48,8 @@ Liquid::Template.register_filter Bridgetown::Filters
 Example:
 
 ```ruby
+# config/initializers/bridgetown.rb
+
 # Set the path to your Bridgetown folder relative to the Rails root
 bridgetown_path = Rails.root.parent.join("bridgetown-site-repo")
 
