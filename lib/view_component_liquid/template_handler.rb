@@ -18,7 +18,7 @@ module ViewComponentLiquid
       component = LiquidComponent.parse(template)
       template = component.content
 
-      assigns = local_assigns.stringify_keys
+      assigns = local_assigns.deep_stringify_keys
       assigns["component"] = component.to_h.deep_stringify_keys
       assigns["controller"] = {
         "controller_name" => @controller.controller_name,
