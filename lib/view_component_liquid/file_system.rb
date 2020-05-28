@@ -31,7 +31,7 @@ module ViewComponentLiquid
       )
 
       if result.present?
-        TemplateHandler.strip_front_matter(result.first.source)
+        LiquidComponent.parse(result.first.source).content
       else
         # Time to look through autoload paths for component folders
         components_folders = Zeitwerk::Loader.all_dirs.select {|item| item.ends_with?("_components")}
@@ -41,7 +41,7 @@ module ViewComponentLiquid
         components_folders.each do |components_folder|
           tmpl = components_folder + "/#{template_path}.liquid"
           if File.exist?(tmpl)
-            template = TemplateHandler.strip_front_matter(File.read(tmpl))
+            template = LiquidComponent.parse(File.read(tmpl)).content
             break
           end
         end

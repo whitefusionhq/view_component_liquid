@@ -3,6 +3,9 @@
 require "action_view"
 require "active_support/dependencies/autoload"
 require "active_support/concern"
+require "liquid"
+require "liquid-render-tag"
+require "liquid-component"
 
 module ViewComponentLiquid
   extend ActiveSupport::Autoload

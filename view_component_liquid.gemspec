@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "liquid",            "~> 4.0"
   spec.add_runtime_dependency "liquid-render-tag", "~> 0.2"
+  spec.add_runtime_dependency "liquid-component",  ">= 0.1"
   spec.add_runtime_dependency "activesupport",     [">= 5.0.0", "< 7.0"]
   
   spec.add_development_dependency "bundler"

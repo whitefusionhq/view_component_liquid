@@ -3,28 +3,9 @@
 # Hook into ActiveView's template handling system
 module ViewComponentLiquid
   class TemplateHandler
-    YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m.freeze
-
     class << self
       def call(template, source)
         "ViewComponentLiquid::TemplateHandler.new(self).render(#{source.inspect}, local_assigns)"
-      end
-
-      def strip_front_matter(markup)
-        if has_yaml_header?(markup)
-          begin
-            $POSTMATCH if markup =~ YAML_FRONT_MATTER_REGEXP
-          rescue StandardError => e
-            Rails.logger.warn "Error stripping front matter from Liquid: #{e.message}"
-            ""
-          end
-        else
-          markup
-        end
-      end
-      
-      def has_yaml_header?(markup)
-        markup.lines.first.match? %r!\A---\s*\r?\n!
       end
     end
 
@@ -34,16 +15,21 @@ module ViewComponentLiquid
     end
 
     def render(template, local_assigns={})
-      template = self.class.strip_front_matter(template)
+      component = LiquidComponent.parse(template)
+      template = component.content
 
       assigns = local_assigns.stringify_keys
+      assigns["component"] = component.to_h.deep_stringify_keys
       assigns["controller"] = {
         "controller_name" => @controller.controller_name,
         "action_name" => @controller.action_name
       }
       if @view.respond_to?(:assigns)
         assigns["controller"].merge! @view.assigns.to_h
+        @view.instance_variable_set(:@liquid_page, component)
       end
+
+      p "ASSIGNS", assigns
 
       liquid = Liquid::Template.parse(template)
       liquid.send(render_method, assigns, filters: filters, registers: registers).html_safe
