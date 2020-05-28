@@ -29,8 +29,6 @@ module ViewComponentLiquid
         @view.instance_variable_set(:@liquid_page, component)
       end
 
-      p "ASSIGNS", assigns
-
       liquid = Liquid::Template.parse(template)
       liquid.send(render_method, assigns, filters: filters, registers: registers).html_safe
     end
