@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Use Liquid templates and components from within ViewComponent}
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/bridgetownrb/view_component_liquid"
+  spec.homepage      = "https://github.com/whitefusionhq/view_component_liquid"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.
