@@ -80,7 +80,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/view_component_liquid/view_component_liquid.
+Bug reports and pull requests are welcome on GitHub at https://github.com/whitefusionhq/view_component_liquid.
 
 ## License
 
@@ -88,4 +88,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the View::Component::Liquid project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/bridgetownrb/view_component_liquid/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the View::Component::Liquid project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/whitefusionhq/view_component_liquid/blob/master/CODE_OF_CONDUCT.md).
